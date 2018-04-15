@@ -4,13 +4,12 @@
  * License: MIT
  */
 
-import NotFoundBlock from "./NotFoundBlock";
-
+import NotFoundBlock from "./NotFoundBlock"
 
 export default {
   blockComponent: NotFoundBlock,
   options: {
     displayOptions: [],
-    defaultDisplay: null
-  }
-};
+    defaultDisplay: null,
+  },
+}

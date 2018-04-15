@@ -1,5 +1,5 @@
-import LinkInput from "./LinkInput";
+import LinkInput from "./LinkInput"
 
 export default {
-  LINK: LinkInput
-};
+  LINK: LinkInput,
+}

@@ -4,11 +4,11 @@
  * License: MIT
  */
 
-import React from "react";
+import React from "react"
 
 export default class Header extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   render() {
@@ -16,7 +16,10 @@ export default class Header extends React.Component {
       <div className="page__header">
         <div className="hero__container">
           <div className="hero__logo">
-            <img className="hero__logo-svg" src="images/megadraft_white_version.svg" />
+            <img
+              className="hero__logo-svg"
+              src="images/megadraft_white_version.svg"
+            />
           </div>
           <h1 className="hero__title">
             The <br />
@@ -30,6 +33,6 @@ export default class Header extends React.Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }

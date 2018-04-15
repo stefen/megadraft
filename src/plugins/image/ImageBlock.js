@@ -4,61 +4,66 @@
  * License: MIT
  */
 
-import React, {Component} from "react";
+import React, { Component } from "react"
 
 import {
   BlockContent,
   BlockData,
   BlockInput,
-  CommonBlock
-} from "../../components/plugin";
+  CommonBlock,
+} from "../../components/plugin"
 
-import icons from "../../icons";
+import icons from "../../icons"
 
-import ImageBlockStyle from "./ImageBlockStyle";
-
+import ImageBlockStyle from "./ImageBlockStyle"
 
 export default class ImageBlock extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this._handleCaptionChange = ::this._handleCaptionChange;
-    this._handleRightsHolderChange = ::this._handleRightsHolderChange;
+    this._handleCaptionChange = ::this._handleCaptionChange
+    this._handleRightsHolderChange = ::this._handleRightsHolderChange
 
     this.actions = [
-      {"key": "delete", "icon": icons.DeleteIcon, "action": this.props.container.remove}
-    ];
+      {
+        key: "delete",
+        icon: icons.DeleteIcon,
+        action: this.props.container.remove,
+      },
+    ]
   }
 
   _handleCaptionChange(event) {
-    event.stopPropagation();
-    this.props.container.updateData({caption: event.target.value});
+    event.stopPropagation()
+    this.props.container.updateData({ caption: event.target.value })
   }
 
   _handleRightsHolderChange(event) {
-    event.stopPropagation();
-    this.props.container.updateData({rightsHolder: event.target.value});
+    event.stopPropagation()
+    this.props.container.updateData({ rightsHolder: event.target.value })
   }
 
-  render(){
+  render() {
     return (
       <CommonBlock {...this.props} actions={this.actions}>
         <BlockContent>
-          <img style={ImageBlockStyle.image} src={this.props.data.src} alt=""/>
+          <img style={ImageBlockStyle.image} src={this.props.data.src} alt="" />
         </BlockContent>
 
         <BlockData>
           <BlockInput
             placeholder="Caption"
             value={this.props.data.caption}
-            onChange={this._handleCaptionChange} />
+            onChange={this._handleCaptionChange}
+          />
 
           <BlockInput
             placeholder="Rights Holder"
             value={this.props.data.rightsHolder}
-            onChange={this._handleRightsHolderChange} />
+            onChange={this._handleRightsHolderChange}
+          />
         </BlockData>
       </CommonBlock>
-    );
+    )
   }
 }

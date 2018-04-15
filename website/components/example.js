@@ -4,74 +4,78 @@
  * License: MIT
  */
 
-import React from "react";
-import PropTypes from "prop-types";
+import React from "react"
+import PropTypes from "prop-types"
 
-import getMuiTheme from "material-ui/styles/getMuiTheme";
-import {grey300, grey900, white, indigo500} from "material-ui/styles/colors";
+import getMuiTheme from "material-ui/styles/getMuiTheme"
+import { grey300, grey900, white, indigo500 } from "material-ui/styles/colors"
 
-import {MegadraftEditor} from "../../src/Megadraft";
-import {editorStateToJSON, editorStateFromRaw} from "../../src/utils";
-import {highlightCode} from "./highlightCode";
+import { MegadraftEditor } from "../../src/Megadraft"
+import { editorStateToJSON, editorStateFromRaw } from "../../src/utils"
+import { highlightCode } from "./highlightCode"
 
-import INITIAL_CONTENT from "./contentExample";
+import INITIAL_CONTENT from "./contentExample"
 
-import relatedArticles from "megadraft-related-articles-plugin";
-import image from "../../src/plugins/image/plugin";
-import video from "../../src/plugins/video/plugin";
-
+import relatedArticles from "megadraft-related-articles-plugin"
+import image from "../../src/plugins/image/plugin"
+import video from "../../src/plugins/video/plugin"
 
 const muiTheme = getMuiTheme({
   fontFamily: "Roboto, sans-serif",
   tabs: {
     textColor: grey300,
-    selectedTextColor: grey900
+    selectedTextColor: grey900,
   },
   palette: {
     primary1Color: white,
-    accent1Color: indigo500
-  }
-});
+    accent1Color: indigo500,
+  },
+})
 
 class Example extends React.Component {
-
   constructor(props) {
-    super(props);
-    const content = editorStateFromRaw(INITIAL_CONTENT);
-    this.keyBindings = [{
-      name: "save",
-      isKeyBound: (e) => {return e.keyCode === 83 && e.ctrlKey;},
-      action: () => {this.onSave();}
-    }];
-    this.resetStyleNewLine = true;
+    super(props)
+    const content = editorStateFromRaw(INITIAL_CONTENT)
+    this.keyBindings = [
+      {
+        name: "save",
+        isKeyBound: e => {
+          return e.keyCode === 83 && e.ctrlKey
+        },
+        action: () => {
+          this.onSave()
+        },
+      },
+    ]
+    this.resetStyleNewLine = true
     this.state = {
       value: content,
-    };
-    this.onChange = ::this.onChange;
-    this.onCodeActive = ::this.onCodeActive;
-    this.maxSidebarButtons = null;
+    }
+    this.onChange = ::this.onChange
+    this.onCodeActive = ::this.onCodeActive
+    this.maxSidebarButtons = null
   }
 
   getChildContext() {
-    return {muiTheme: getMuiTheme(muiTheme)};
+    return { muiTheme: getMuiTheme(muiTheme) }
   }
 
   componentDidMount() {
-    highlightCode(this);
+    highlightCode(this)
   }
 
   onChange(value) {
     this.setState({
-      value
-    });
+      value,
+    })
   }
 
   onSave() {
-    console.log("save");
+    console.log("save")
   }
 
   onCodeActive() {
-    highlightCode(this);
+    highlightCode(this)
   }
 
   renderEditor() {
@@ -84,15 +88,19 @@ class Example extends React.Component {
           onChange={this.onChange}
           keyBindings={this.keyBindings}
           resetStyleNewLine={this.resetStyleNewLine}
-          maxSidebarButtons={this.maxSidebarButtons}/>
+          maxSidebarButtons={this.maxSidebarButtons}
+        />
       </div>
-    );
+    )
   }
 
   renderJsonPreview() {
     return (
       <div>
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/gruvbox-dark.min.css"/>
+        <link
+          rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/gruvbox-dark.min.css"
+        />
         <div className="tab-container-json">
           <pre className="jsonpreview">
             <code className="json hljs">
@@ -101,22 +109,22 @@ class Example extends React.Component {
           </pre>
         </div>
       </div>
-    );
+    )
   }
 
   render() {
     if (this.props.activeContent) {
-      return this.renderEditor();
+      return this.renderEditor()
     }
-    return this.renderJsonPreview();
+    return this.renderJsonPreview()
   }
 }
 
 /* global hljs */
-hljs.initHighlightingOnLoad();
+hljs.initHighlightingOnLoad()
 
 Example.childContextTypes = {
-  muiTheme: PropTypes.object.isRequired
-};
+  muiTheme: PropTypes.object.isRequired,
+}
 
-export default Example;
+export default Example

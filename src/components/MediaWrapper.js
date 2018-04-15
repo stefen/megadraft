@@ -4,26 +4,24 @@
  * License: MIT
  */
 
-import React, {Component} from "react";
-
+import React, { Component } from "react"
 
 export default class MediaWrapper extends Component {
+  constructor(props) {
+    super(props)
 
-  constructor(props){
-    super(props);
-
-    this._handleFocus = ::this._handleFocus;
-    this._handleBlur = ::this._handleBlur;
+    this._handleFocus = ::this._handleFocus
+    this._handleBlur = ::this._handleBlur
   }
 
   _handleFocus() {
     // temporarily set the editor to readonly
-    this.props.setReadOnly(true);
+    this.props.setReadOnly(true)
   }
 
   _handleBlur() {
     // restore readonly to its original state
-    this.props.setInitialReadOnly();
+    this.props.setInitialReadOnly()
   }
 
   render() {
@@ -31,6 +29,6 @@ export default class MediaWrapper extends Component {
       <div onBlur={this._handleBlur} onFocus={this._handleFocus}>
         {this.props.children}
       </div>
-    );
+    )
   }
 }

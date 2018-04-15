@@ -4,27 +4,26 @@
  * License: MIT
  */
 
-import React, {Component} from "react";
+import React, { Component } from "react"
 
-import Modal from "backstage-modal";
-import ModalPluginList from "./ModalPluginList";
-
+import Modal from "backstage-modal"
+import ModalPluginList from "./ModalPluginList"
 
 export default class PluginsModal extends Component {
   constructor(props) {
-    super(props);
-    this.onCloseRequest = ::this.onCloseRequest;
-    this.modalOptions = this.props.modalOptions ? this.props.modalOptions : {};
-    this.modalWidth = this.modalOptions.width || 528;
-    this.modalHeight = this.modalOptions.height || 394;
+    super(props)
+    this.onCloseRequest = ::this.onCloseRequest
+    this.modalOptions = this.props.modalOptions ? this.props.modalOptions : {}
+    this.modalWidth = this.modalOptions.width || 528
+    this.modalHeight = this.modalOptions.height || 394
   }
 
   onCloseRequest() {
-    if(!this.props.isOpen) {
-      return;
+    if (!this.props.isOpen) {
+      return
     }
-    document.body.classList.remove("megadraft-modal--open");
-    this.props.toggleModalVisibility();
+    document.body.classList.remove("megadraft-modal--open")
+    this.props.toggleModalVisibility()
   }
 
   render() {
@@ -36,7 +35,8 @@ export default class PluginsModal extends Component {
         isOpen={this.props.isOpen}
         onCloseRequest={this.onCloseRequest}
         width={this.modalWidth}
-        height={this.modalHeight} >
+        height={this.modalHeight}
+      >
         <ModalPluginList
           toggleModalVisibility={this.onCloseRequest}
           plugins={this.props.plugins}
@@ -44,6 +44,6 @@ export default class PluginsModal extends Component {
           editorState={this.props.editorState}
         />
       </Modal>
-    );
+    )
   }
 }
