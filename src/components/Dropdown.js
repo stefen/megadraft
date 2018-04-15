@@ -5,7 +5,6 @@
  */
 
 import React, { Component } from "react"
-import ReactDOM from "react-dom"
 import PropTypes from "prop-types"
 import classNames from "classnames"
 
@@ -62,7 +61,7 @@ export default class Dropdown extends Component {
     event.preventDefault()
   }
 
-  toggleDropDown(event) {
+  toggleDropDown() {
     this.setState({ isOpen: !this.state.isOpen })
   }
 
@@ -70,7 +69,7 @@ export default class Dropdown extends Component {
     if (this.isEmpty()) {
       return null
     }
-    if (!ReactDOM.findDOMNode(this).contains(event.target)) {
+    if (!this.node.contains(event.target)) {
       this.setState({ isOpen: false })
     }
   }
