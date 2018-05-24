@@ -16,7 +16,6 @@ import {highlightCode} from "./highlightCode";
 
 import INITIAL_CONTENT from "./contentExample";
 
-import relatedArticles from "megadraft-related-articles-plugin";
 import image from "../../src/plugins/image/plugin";
 import video from "../../src/plugins/video/plugin";
 
@@ -78,7 +77,7 @@ class Example extends React.Component {
     return (
       <div className="tab-container-editor">
         <MegadraftEditor
-          plugins={[image, video, relatedArticles]}
+          plugins={[image, video]}
           editorState={this.state.value}
           placeholder="Text"
           onChange={this.onChange}
